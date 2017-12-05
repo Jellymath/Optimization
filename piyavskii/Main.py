@@ -14,8 +14,8 @@ if __name__ == '__main__':
     data_set = get_data_function(a, b, f, count_iterations)
     result = piyavskii_method(a, b, f, count_iterations)
     print(result)
+    ax = plt.gca()
     for iteration in result['iterations']:
-        ax = plt.gca()
         left = iteration['left']
         right = iteration['right']
         ax.add_line(mlines.Line2D([left['point'], left['x_point_for_left']],
@@ -26,6 +26,6 @@ if __name__ == '__main__':
                                   [left['result_point'], left['y_point_for_right']], color='#a5dab2'))
         ax.add_line(mlines.Line2D([right['point'], right['x_point_for_right']],
                                   [right['result_point'], right['y_point_for_right']], color='#389e98'))
-
+    ax.grid(linestyle='--')
     plt.plot([data['value'] for data in data_set], [data['result_function'] for data in data_set])
     plt.show()
